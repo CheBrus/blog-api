@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\User;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
@@ -13,7 +13,7 @@ class UserPolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
@@ -24,7 +24,7 @@ class UserPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
@@ -36,7 +36,7 @@ class UserPolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
@@ -47,7 +47,7 @@ class UserPolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
@@ -59,7 +59,7 @@ class UserPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
@@ -71,7 +71,7 @@ class UserPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
@@ -83,7 +83,7 @@ class UserPolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
