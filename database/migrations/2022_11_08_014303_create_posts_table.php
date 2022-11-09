@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('extract');
             $table->longText('body');
             $table->dateTime('published')->nullable();
-            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->index(['slug']);
         });
