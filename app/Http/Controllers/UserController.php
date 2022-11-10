@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -33,10 +33,11 @@ class UserController extends Controller
         if (isset($data['password'])) {
             $data['password'] = bcrypt($data['password']);
         }
-        return $user->update($data);
+        $user->update($data);
+        return response()->json($user);
     }
 
-    public function delete(User $user)
+    public function destroy(User $user)
     {
         $user->delete();
         return response()->json(null, 204);
