@@ -26,10 +26,11 @@ class CategoryController extends Controller
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        return $category->update($request->validated());
+        $category->update($request->validated());
+        return response()->json($category);
     }
 
-    public function delete(Category $category)
+    public function destroy(Category $category)
     {
         $category->delete();
         return response()->json(null, 204);
