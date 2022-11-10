@@ -21,14 +21,19 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
 
-
-        $user = User::create($request->validated());
+        $data =$request->validated();
+        $data['password'] = bcrypt($data['password']);
+        $user = User::create($data);
         return response()->json($user, 201);
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        return $user->update($request->validated());
+        $data =$request->validated();
+        if (isset($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        }
+        return $user->update($data);
     }
 
     public function delete(User $user)

@@ -33,11 +33,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $accessToken = $request->bearerToken();
-
-        // Get access token from database
         $token = PersonalAccessToken::findToken($accessToken);
-
-        // Revoke token
         $token->delete();
         return response()->json(['message' => "Logged out successfully!"], 200);
     }
