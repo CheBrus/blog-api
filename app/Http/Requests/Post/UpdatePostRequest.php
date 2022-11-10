@@ -13,7 +13,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->route('post')->user_id === auth()->id();
     }
 
     /**
@@ -24,7 +24,15 @@ class UpdatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
+            'name' => 'sometimes|string|max:255',
+            'slug' => 'sometimes|string|max:255|unique:posts,slug',
+            'extract' => 'sometimes|string',
+            'body' => 'sometimes|string',
+            'published' => 'sometimes|date',
+            'categories' => 'sometimes|array',
+            'categories.*' => 'sometimes|integer|exists:categories,id',
+            'user_id' => 'required|integer|exists:users,id',
         ];
     }
 }

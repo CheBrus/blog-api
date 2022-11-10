@@ -11,10 +11,10 @@ class Post extends Model
 {
     use HasFactory;
 
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName(): string
+//    {
+//        return 'slug';
+//    }
 
     public function user(): BelongsTo
     {
@@ -23,6 +23,11 @@ class Post extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', '<>', null);
     }
 
 }
